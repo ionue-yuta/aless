@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Aless</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1 style="text-align: center">実験を始める前の簡単なテスト</h1>
+        <div class="row" style="visibility: visible">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+                <button id="start" onClick="loadimg()">START</button>
+            </div>
+        </div>
+        <img id="facephoto" style="visibility: hidden"/>
+        <script type="text/javascript">
+            var i = 1;
+            var interval;
+            function loadimg(){
+                interval = setInterval("showphoto()",800);
+            }
+            function showphoto(){
+                    if(i === 1){
+                        var btn = document.getElementById("start");
+                        btn.style.visibility = "hidden";
+                        var img = document.getElementById("facephoto");
+                        img.style.visibility = "visible";
+                    }
+                    var img = document.getElementById("facephoto");
+                    img.src = "images/demo" + "/" + i + ".jpg";
+                    if(i === 6){
+                        clearInterval(interval);
+                        var img = document.getElementById("facephoto");
+                        img.style.visibility = "hidden";
+                        setTimeout("show()",3000);
+                    }
+                    i++;
+                }
+                function show(){
+                    var form = document.getElementById("form");
+                    form.style.visibility = "visible";
+                }
+        </script>
+        <div id="form" class="row" style="visibility: hidden">
+            <h6 style="text-align: center">このような感じで写真が連続で表示されるため、それらが属するグループの選択をお願いします<br>下部ボタンをクリックしてはじめてくださいm(_ _)m</h6>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+                <form action="alessprep_female.php">
+                    <input type="submit" value="START" id="btn">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
